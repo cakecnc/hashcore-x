@@ -9,7 +9,7 @@ import type {
   RunnerStatus,
 } from "@/lib/runner/types";
 
-const RUNNER_URL = "http://127.0.0.1:8789";
+const DEFAULT_RUNNER_URL = "http://127.0.0.1:8789";
 const sampleHash = "0976292bd16a98e329d7e0e33a2d0494";
 const sampleCandidates = "browser-demo\nhashcat-demo-2026\nlocal-recovery";
 const modes = [
@@ -40,6 +40,20 @@ export function HashcatRunnerClient() {
   );
   const jobId = job?.id;
   const isRunning = job?.state === "queued" || job?.state === "running";
+
+  useEffect(() => {
+    const parameters = new URLSearchParams(window.location.hash.slice(1));
+    const nativeToken = parameters.get("token");
+    const nativeRunnerURL = parameters.get("runner");
+    if (nativeToken) setToken(nativeToken);
+    if (nativeRunnerURL?.startsWith("http://127.0.0.1:")) {
+      (window as typeof window & { __HASHCORE_RUNNER_URL?: string }).__HASHCORE_RUNNER_URL =
+        nativeRunnerURL;
+    }
+    if (nativeToken || nativeRunnerURL) {
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
+  }, []);
 
   const refreshStatus = useCallback(async () => {
     try {
@@ -271,7 +285,15 @@ async function runnerRequest<T>(
 ): Promise<T> {
   const headers = new Headers(init.headers);
   if (token) headers.set("Authorization", `Bearer ${token}`);
-  const response = await fetch(`${RUNNER_URL}${path}`, { ...init, headers, cache: "no-store" });
+  const nativeRunnerURL =
+    typeof window === "undefined"
+      ? undefined
+      : (window as typeof window & { __HASHCORE_RUNNER_URL?: string }).__HASHCORE_RUNNER_URL;
+  const response = await fetch(`${nativeRunnerURL ?? DEFAULT_RUNNER_URL}${path}`, {
+    ...init,
+    headers,
+    cache: "no-store",
+  });
   if (response.status === 204) return undefined as T;
   const payload = await response.json() as T & { error?: string };
   if (!response.ok) throw new Error(payload.error || `Runner 요청 실패 (${response.status})`);

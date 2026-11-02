@@ -25,11 +25,11 @@ export function AppShell({ active, children, fullWidth = false }: AppShellProps)
         본문 바로가기
       </a>
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="HashCat Web Utils 홈">
-          <span className="brand-mark" aria-hidden="true">HC</span>
+        <Link className="brand" href="/" aria-label="HASHCORE X 홈">
+          <span className="brand-mark" aria-hidden="true">HX</span>
           <span>
-            <strong>HashCat</strong>
-            <small>WEB UTILS</small>
+            <strong>HASHCORE</strong>
+            <small>X // LOCAL RECOVERY</small>
           </span>
         </Link>
         <nav className="main-nav" aria-label="주요 메뉴">
@@ -56,7 +56,7 @@ export function AppShell({ active, children, fullWidth = false }: AppShellProps)
       </main>
       <footer className="site-footer">
         <div>
-          <strong>HashCat Web Utils</strong>
+          <strong>HASHCORE X</strong>
           <p>브라우저 Utility와 제한된 로컬 GPU 실행기</p>
         </div>
         <div className="footer-links">

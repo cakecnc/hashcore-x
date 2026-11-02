@@ -21,10 +21,12 @@ test("server-renders the finished Korean home page", async () => {
 
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="ko"/i);
-  assert.match(html, /<title>HashCat Web Utils<\/title>/i);
+  assert.match(html, /<title>HASHCORE X<\/title>/i);
   assert.match(html, /텍스트 Utility를/);
   assert.match(html, /서버 전송 없음/);
   assert.match(html, /추천 Utility/);
+  assert.match(html, /https:\/\/www\.paypal\.com\/ncp\/payment\/W7KAJ837HWYFA/);
+  assert.match(html, /https:\/\/www\.paypal\.com\/ncp\/payment\/HC8WC5F8MAT7A/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 

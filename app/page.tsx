@@ -48,6 +48,41 @@ export default function Home() {
 
       <SafetyNotice />
 
+      <section className="access-section" aria-labelledby="access-heading">
+        <div className="section-heading-row">
+          <div>
+            <span className="eyebrow">HASHCORE X ACCESS</span>
+            <h2 id="access-heading">로컬 복구 워크벤치 이용권</h2>
+          </div>
+          <span className="access-delivery">DIGITAL LICENSE · 배송비 0</span>
+        </div>
+        <p className="access-lead">
+          PayPal에서 결제하고 결제 완료 이메일 기준으로 등록 코드를 발급받으세요.
+          카드정보와 결제정보는 HASHCORE X 서버에 저장되지 않습니다.
+        </p>
+        <div className="access-grid">
+          <article className="access-card">
+            <span>06 MONTHS</span>
+            <h3>6개월 이용권</h3>
+            <p className="access-price"><strong>$33</strong><small>USD</small></p>
+            <p>승인된 로컬 데이터 복구용 · 디지털 코드 발급</p>
+            <a className="paypal-button" href="https://www.paypal.com/ncp/payment/W7KAJ837HWYFA" target="_blank" rel="noopener noreferrer">
+              PayPal로 결제 <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+          <article className="access-card access-card-featured">
+            <span>12 MONTHS · BEST VALUE</span>
+            <h3>1년 이용권</h3>
+            <p className="access-price"><strong>$55</strong><small>USD</small></p>
+            <p>승인된 로컬 데이터 복구용 · 디지털 코드 발급</p>
+            <a className="paypal-button" href="https://www.paypal.com/ncp/payment/HC8WC5F8MAT7A" target="_blank" rel="noopener noreferrer">
+              PayPal로 결제 <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+        <p className="access-note">결제 자체는 PayPal에서 처리됩니다. 결제 후 물리 배송은 없으며, 등록 코드는 결제 확인 후 별도로 발급됩니다.</p>
+      </section>
+
       <section className="recommended-section" aria-labelledby="recommended-heading">
         <div className="section-heading-row">
           <div>

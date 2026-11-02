@@ -1,6 +1,17 @@
-# HashCat Web Utils
+# HASHCORE X
 
 `hashcat-utils`의 텍스트 처리 흐름을 명령어 없이 제공하는 TypeScript 웹 앱과, 이 Mac의 Hashcat을 제한적으로 호출하는 로컬 GPU Runner입니다.
+
+## macOS Desktop App
+
+Intel Mac용 독립 앱을 빌드하면 `dist/HASHCORE X.app`이 생성됩니다. 앱은 웹 화면과 Runner를 전용 로컬 포트에서 시작하고, 일회성 토큰을 URL에 남기지 않고 현재 앱 세션으로만 전달합니다.
+
+```bash
+pnpm desktop:build
+open "dist/HASHCORE X.app"
+```
+
+앱은 이 저장소와 별도 설치된 Hashcat 실행 파일을 사용하며, Hashcat 원본 바이너리를 포함하거나 변경하지 않습니다.
 
 브라우저 Utility 입력과 결과는 Web Worker에서만 처리됩니다. GPU Runner는 `127.0.0.1`에만 바인딩되고 임의 Shell 명령 대신 Hashcat 바이너리를 고정 인자로 직접 실행합니다.
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "./globals.css";
 
-const description = "Hashcat 작업용 텍스트 목록을 서버 전송 없이 브라우저에서 정리하고 분석하는 안전한 Utility Workbench.";
+const description = "승인된 로컬 데이터만 처리하는 Hashcat 기반 데스크톱 복구 워크벤치.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -17,18 +17,18 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(`${protocol}://${host}`),
     title: {
-      default: "HashCat Web Utils",
-      template: "%s · HashCat Web Utils",
+      default: "HASHCORE X",
+      template: "%s · HASHCORE X",
     },
     description,
     openGraph: {
-      title: "HashCat Web Utils",
+      title: "HASHCORE X",
       description,
       images: [{ url: "/og.png", width: 1536, height: 1024, alt: "HashCat Web Utils Browser-only Text Utility Workbench" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "HashCat Web Utils",
+      title: "HASHCORE X",
       description,
       images: ["/og.png"],
     },
